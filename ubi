@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Compartir Ubicación</title>
+</head>
+<body style="text-align: center; font-family: sans-serif; padding-top: 100px;">
+  <h2>¿Quieres compartir tu ubicación?</h2>
+  <button onclick="enviarUbicacion()">Enviar</button>
+
+  <script>
+    function enviarUbicacion() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+          const lat = position.coords.latitude;
+          const lon = position.coords.longitude;
+          // Redirige a ver.html con los datos en la URL
+          window.location.href = `ver.html?lat=${lat}&lon=${lon}`;
+        }, function() {
+          alert("No se pudo obtener la ubicación.");
+        });
+      } else {
+        alert("Tu navegador no permite geolocalización.");
+      }
+    }
+  </script>
+</body>
+</html>
