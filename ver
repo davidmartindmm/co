@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ubicación Recibida</title>
+</head>
+<body style="text-align: center; font-family: sans-serif; padding-top: 100px;">
+  <h2>Ubicación recibida:</h2>
+  <p id="coordenadas">Cargando...</p>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const lat = params.get("lat");
+    const lon = params.get("lon");
+
+    if (lat && lon) {
+      document.getElementById("coordenadas").innerText = `Latitud: ${lat}, Longitud: ${lon}`;
+    } else {
+      document.getElementById("coordenadas").innerText = "No se recibió ninguna ubicación.";
+    }
+  </script>
+</body>
+</html>
